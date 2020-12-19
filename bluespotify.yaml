@@ -1,0 +1,28 @@
+blueprint:
+  name: Start music on Alexa when tag is scanned
+  description: When a tag is scanned, start the associated music on the selected Alexa media player
+  domain: automation
+  input:
+    tag_id:
+      name: Tag ID
+      description: The tag ID for the selected song
+    song_name:
+      name: Song name
+      description: The name of the song to play
+    alexa_entity_id:
+      name: Alexa player
+      description: The entity ID of the alexa player to use
+      selector:
+        entity:
+          domain: media_player
+
+trigger:
+  - platform: tag
+    tag_id: !input tag_id
+
+action:
+  - service: media_player.play_media
+    data_template:
+      entity_id: !input alexa_entity_id
+      media_content_id: !input song_name
+      media_content_type: "SPOTIFY"
