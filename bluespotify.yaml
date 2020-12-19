@@ -1,4 +1,4 @@
-blueprint:
+yaml blueprint:
   name: Start music on Alexa when tag is scanned
   description: When a tag is scanned, start the associated music on the selected Alexa media player
   domain: automation
